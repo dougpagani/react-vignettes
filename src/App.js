@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 
 function App() {
   const [s, ss] = useState('stub')
@@ -120,6 +120,7 @@ function usePrevious(value) {
 function CounterWithPrevious(prop) {
   const [ count, setCount ] = useState(prop.prop);
   const prevCount = usePrevious(count)
+  const val = useMemo(() => { expensiveOperation(prop.prop); return count; }, [prop.prop])
 
   return (
     <div>
@@ -135,6 +136,9 @@ function CounterWithPrevious(prop) {
       </div>
       <div>
         prop: {prop.prop}
+      </div>
+      <div>
+        VAL: {val}
       </div>
     </div>
   )
@@ -175,4 +179,12 @@ function CounterWithPreviousCount() {
   )
 }
 
+function expensiveOperation() {
+  let i = 0
+  while (i < 5000000000) {
+    i++
+  }
+}
+
 export default App;
+
