@@ -101,7 +101,37 @@ function FancyMappedCounterRefactored() {
 
 }
 
-function usePrevious(init) {
+// does this work with props as well as state?
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect( () => {
+    ref.current = value
+  })
+  return ref.current
+
+}
+
+function CounterWithPrevious() {
+  const [ count, setCount ] = useState(5);
+  const prevCount = usePrevious(count)
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>
+        x
+      </button>
+      <br/>
+      <div>
+        Count: {count}
+      </div>
+      <div>
+        Previous: {prevCount}
+      </div>
+    </div>
+  )
+}
+
+function usePreviousCount(init) {
   const [ count, setCount ] = useState(init)
   const prevCountRef = useRef()
   useEffect(() => {
@@ -116,8 +146,9 @@ function usePrevious(init) {
     setCount,
   }
 }
-function CounterWithPrevious() {
-  const { count, prevCount, setCount } = usePrevious(9)
+
+function CounterWithPreviousCount() {
+  const { count, prevCount, setCount } = usePreviousCount(9)
 
   return (
     <div>
