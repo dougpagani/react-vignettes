@@ -14,6 +14,9 @@ function App() {
         <button onClick={randomizeState}>
           randomize prop
         </button>
+        {
+          [1,2,3].map( (num) => ( <button onClick={() => {ss(num)}}>{num}</button> ) )
+        }
         <CounterWithPrevious prop={s}/>
       </div>
     </div>
@@ -181,7 +184,7 @@ function CounterWithPreviousCount() {
 
 function expensiveOperation() {
   let i = 0
-  while (i < 5000000000) {
+  while (i < 3000000000) {
     i++
   }
 }
