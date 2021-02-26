@@ -3,12 +3,18 @@ import './App.css';
 import { useState, useRef, useEffect } from 'react';
 
 function App() {
+  const [s, ss] = useState('stub')
+  const randomizeState = () => { ss(Math.random()) }
+
   return (
     <div className="App">
       <VignetteSelector/>
       <div className="bigtext">
         Counter
-        <CounterWithPrevious/>
+        <button onClick={randomizeState}>
+          randomize prop
+        </button>
+        <CounterWithPrevious prop={s}/>
       </div>
     </div>
   );
@@ -111,7 +117,7 @@ function usePrevious(value) {
 
 }
 
-function CounterWithPrevious() {
+function CounterWithPrevious(prop) {
   const [ count, setCount ] = useState(5);
   const prevCount = usePrevious(count)
 
@@ -126,6 +132,9 @@ function CounterWithPrevious() {
       </div>
       <div>
         Previous: {prevCount}
+      </div>
+      <div>
+        prop: {prop.prop}
       </div>
     </div>
   )
