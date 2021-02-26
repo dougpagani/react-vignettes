@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <VignetteSelector/>
       <div className="bigtext">
         Counter
-        <FancyMappedCounter/>
+        <CounterWithPrevious/>
       </div>
     </div>
   );
@@ -99,6 +99,29 @@ function FancyMappedCounterRefactored() {
     </div>
   )
 
+}
+
+function CounterWithPrevious() {
+  const [ count, setCount ] = useState(99)
+  const prevCountRef = useRef()
+  useEffect(() => {
+    prevCountRef.current = count
+  })
+  const prevCount = prevCountRef.current;
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>
+        x
+      </button>
+      <br/>
+      <div>
+        Count: {count}
+      </div>
+      <div>
+        Previous: {prevCount}
+      </div>
+    </div>
+  )
 }
 
 export default App;
