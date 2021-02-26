@@ -1,5 +1,14 @@
-.App {
+/* .App { */
+/*   background-color: #282c34; */
+/* } */
+
+.bigtext {
+  font-size: 200px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #e9edc2;
 }
 
 .App-logo {
