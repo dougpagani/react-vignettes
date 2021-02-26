@@ -101,13 +101,24 @@ function FancyMappedCounterRefactored() {
 
 }
 
-function CounterWithPrevious() {
-  const [ count, setCount ] = useState(99)
+function usePrevious(init) {
+  const [ count, setCount ] = useState(init)
   const prevCountRef = useRef()
   useEffect(() => {
     prevCountRef.current = count
+    // won't fire till after prevCount has been captured
+    // ... and since it's a ref, and not a state, a re-render won't be triggered
   })
   const prevCount = prevCountRef.current;
+  return {
+    count,
+    prevCount,
+    setCount,
+  }
+}
+function CounterWithPrevious() {
+  const { count, prevCount, setCount } = usePrevious(9)
+
   return (
     <div>
       <button onClick={() => setCount(count + 1)}>
