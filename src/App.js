@@ -118,7 +118,7 @@ function usePrevious(value) {
 }
 
 function CounterWithPrevious(prop) {
-  const [ count, setCount ] = useState(5);
+  const [ count, setCount ] = useState(prop.prop);
   const prevCount = usePrevious(count)
 
   return (
