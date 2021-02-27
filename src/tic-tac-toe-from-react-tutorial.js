@@ -18,14 +18,16 @@
 // - add button effect for pressing
 // - add dark-mode toggle
 // - custom hooks refactor
+// - cant toggle squares which are already pressed
 
 import './tic-tac-toe-from-react-tutorial.css';
 import React, { useState, useEffect } from 'react'
 
+const RED = "#633"
+const BLUE = "#366"
+const GRAY = "#555"
+
 function Square({mark, onClick}) {
-  const RED = "#633"
-  const BLUE = "#366"
-  const GRAY = "#555"
   let color = GRAY
   if (mark === 'X') color = RED
   if (mark === 'O') color = BLUE
@@ -58,11 +60,16 @@ function Board({setGameIsWon}) {
   }
 
 
-  const status = `Next player: ${XIsNext ? 'X' : 'O'}`;
+  const status = `Next player: ${XIsNext ? <span style={{color: BLUE}}>'X'</span> : 'O'}`;
 
   return (
     <div className="board">
-      <div className="status">{status}</div>
+      <div className="status">
+        Next player:
+        <span style={{color: XIsNext ? RED : BLUE, "font-weight": "bold"}}>
+          { XIsNext ? ' X' : ' O' }
+        </span>
+      </div>
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
