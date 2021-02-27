@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useRef, useEffect, useMemo } from 'react';
+import TicTacToe from './tic-tac-toe.js'
 
 function App() {
   const [s, ss] = useState('stub')
@@ -17,7 +18,7 @@ function App() {
         {
           [1,2,3].map( (num) => ( <button onClick={() => {ss(num)}}>{num}</button> ) )
         }
-        <CounterWithPrevious prop={s}/>
+        <TicTacToe/>
       </div>
     </div>
   );
