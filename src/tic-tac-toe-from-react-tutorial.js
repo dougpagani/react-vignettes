@@ -16,12 +16,13 @@
 // - build a maze game, add depth-first & breadth-first search
 
 import './tic-tac-toe-from-react-tutorial.css';
-import React from 'react'
+import React, { useState } from 'react'
 
 function Square() {
+  const [ mark, setMark ] = useState(null)
   return (
-    <button className="square">
-      {/* TODO */}
+    <button className="square" onClick={() => { setMark('x') }}>
+      {mark}
     </button>
   );
 }
