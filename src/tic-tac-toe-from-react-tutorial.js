@@ -19,6 +19,9 @@
 // - add dark-mode toggle
 // - custom hooks refactor
 // - cant toggle squares which are already pressed
+// - add option to choose your own tile-color
+// - add win animation (cross-out)
+// - add an overlay for cross-out
 
 import './tic-tac-toe-from-react-tutorial.css';
 import React, { useState, useEffect } from 'react'
@@ -44,9 +47,15 @@ function Board({setGameIsWon}) {
 
   useWinConditionCheckerEffect(marks, setGameIsWon)
 
+  function markIsSet(mark) {
+    return mark === 'X' || mark === 'O'
+  }
 
   function renderSquare(i) {
     function setMark() {
+      if ( markIsSet(marks[i]) ) {
+        return // abort without overwriting
+      }
       let newMarks = marks.slice()
       newMarks[i] = XIsNext ? 'X' : 'O'
       setXToBeNext(!XIsNext)
