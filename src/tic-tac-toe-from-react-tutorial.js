@@ -15,9 +15,12 @@
 // - add a useUILock() -- [ bool, lockUI, unlockUI ]
 // - build a maze game, add depth-first & breadth-first search
 // - add responsive design for tic-tac-toe, 3 sizes of squares
+// - add button effect for pressing
+// - add dark-mode toggle
+// - custom hooks refactor
 
 import './tic-tac-toe-from-react-tutorial.css';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function Square({mark, onClick}) {
   const RED = "#633"
@@ -33,9 +36,16 @@ function Square({mark, onClick}) {
   );
 }
 
-function Board() {
+function Board({setGameIsWon}) {
   const [ marks, setMarks ] = useState(Array(9).fill(null))
   const [ XIsNext, setXToBeNext ] = useState(true)
+
+  // useWinConditionChecker
+  useEffect(() => {
+    if ( marks[0] === 'X' && marks[1] === 'X' && marks[2] === 'X' ) {
+      setGameIsWon(true)
+    }
+  }, [marks])
 
   function renderSquare(i) {
     function setMark() {
@@ -73,24 +83,20 @@ function Board() {
 }
 
 function Game() {
+  const [ gameIsWon, setGameIsWon ] = useState(false)
+
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
+        <Board setGameIsWon={setGameIsWon}/>
       </div>
       <div className="game-info">
+        <div>{ gameIsWon ? "GAME OVER" : "Game on!" }</div>
         <div>{/* status */}</div>
         <ol>{/* TODO */}</ol>
       </div>
     </div>
   );
 }
-
-// ========================================
-
-// ReactDOM.render(
-//   <Game />,
-//   document.getElementById('root')
-// );
 
 export default Game

@@ -2,3 +2,4 @@
 - Assert that next player matches what is entered
 - Assert that you can't overwrite a square
 - Assert that the squares start empty
+- Assert win condition
