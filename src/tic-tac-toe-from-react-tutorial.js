@@ -14,6 +14,7 @@
 // - build chess, w/ svg & everything
 // - add a useUILock() -- [ bool, lockUI, unlockUI ]
 // - build a maze game, add depth-first & breadth-first search
+// - add responsive design for tic-tac-toe, 3 sizes of squares
 
 import './tic-tac-toe-from-react-tutorial.css';
 import React, { useState } from 'react'
@@ -35,7 +36,7 @@ function Board() {
   const status = 'Next player: X';
 
   return (
-    <div>
+    <div className="board">
       <div className="status">{status}</div>
       <div className="board-row">
         {renderSquare(0)}
