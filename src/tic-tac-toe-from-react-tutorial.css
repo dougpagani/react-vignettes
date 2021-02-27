@@ -1,7 +1,16 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
+  /* font: 14px "Century Gothic", Futura, sans-serif; */
+  font: 14px "Courier", Futura, sans-serif;
   margin: 20px;
+  background: #181818;
+  color: #fff;
 }
+/* 
+  Dark Mode:
+  https://material.io/design/color/dark-theme.html#properties 
+  Good example site:
+  https://www.computerhope.com/issues/ch000072.htm
+ */
 
 ol, ul {
   padding-left: 30px;
@@ -18,9 +27,11 @@ ol, ul {
 }
 
 .square {
-  background: #fdf5e6;
+  background: #505050;
+  /* background: #fdf5e6; */
   border: 1px solid #999;
   float: left;
+  font-family: Courier;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
@@ -43,9 +54,10 @@ ol, ul {
 .game {
   display: flex;
   flex-direction: row;
+  background: #303030;
 }
 
 .game-info {
-  margin-left: 20px;
+  margin-left: 80px;
 }
 
