@@ -54,9 +54,10 @@ function Board({setGameIsWon}) {
       [1,4,7],
       [3,4,6],
     ]
+    // If any of the tileSets are all owned by just one player.
     if (winConditions.some( 
-      ([FIRST, SECOND, THIRD]) => ( marks[FIRST] === 'X' && marks[SECOND] === 'X' && marks[THIRD] === 'X' ))
-    ) {
+      (tileSet) => tileSet.every( (tile) => marks[tile] === 'X' )
+    )) {
       setGameIsWon(true)
     }
 
