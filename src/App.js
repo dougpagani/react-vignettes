@@ -4,27 +4,35 @@ import { useState, useRef, useEffect, useMemo } from 'react';
 import TicTacToe from './tic-tac-toe.js'
 
 function App() {
-  const [s, ss] = useState('stub')
-  const randomizeState = () => { ss(Math.random()) }
-
   return (
     <div className="App">
       <VignetteSelector/>
-      <div className="bigtext">
-        Counter
-        <button onClick={randomizeState}>
-          randomize prop
-        </button>
-        {
-          [1,2,3].map( (num) => ( <button onClick={() => {ss(num)}}>{num}</button> ) )
-        }
+      <BigTextAndPropRandomizer>
         <TicTacToe/>
-      </div>
+      </BigTextAndPropRandomizer>
     </div>
   );
 }
 function VignetteSelector() {
   return null
+}
+
+function BigTextAndPropRandomizer({children}) {
+  const [s, ss] = useState('stub')
+  const randomizeState = () => { ss(Math.random()) }
+
+  return (
+    <div className="bigtext">
+      Counter
+      <button onClick={randomizeState}>
+        randomize prop
+      </button>
+      {
+        [1,2,3].map( (num) => ( <button onClick={() => {ss(num)}}>{num}</button> ) )
+      }
+      {children}
+    </div>
+  )
 }
 function Counter() {
   const [x, setX ] = useState(0)
