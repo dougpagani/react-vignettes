@@ -44,32 +44,22 @@ function Board({setGameIsWon}) {
 
   // useWinConditionChecker
   useEffect(() => {
-    if ( marks[0] === 'X' && marks[1] === 'X' && marks[2] === 'X' ) {
+    const winConditions = [
+      [0,1,2],
+      [0,3,6],
+      [0,4,8],
+      [2,5,8],
+      [6,7,8],
+      [2,4,6],
+      [1,4,7],
+      [3,4,6],
+    ]
+    if (winConditions.some( 
+      ([FIRST, SECOND, THIRD]) => ( marks[FIRST] === 'X' && marks[SECOND] === 'X' && marks[THIRD] === 'X' ))
+    ) {
       setGameIsWon(true)
     }
 
-    if ( marks[0] === 'X' && marks[3] === 'X' && marks[6] === 'X' ) {
-      setGameIsWon(true)
-    }
-
-    if ( marks[0] === 'X' && marks[4] === 'X' && marks[8] === 'X' ) {
-      setGameIsWon(true)
-    }
-    if ( marks[2] === 'X' && marks[5] === 'X' && marks[8] === 'X' ) {
-      setGameIsWon(true)
-    }
-    if ( marks[6] === 'X' && marks[7] === 'X' && marks[8] === 'X' ) {
-      setGameIsWon(true)
-    }
-    if ( marks[2] === 'X' && marks[4] === 'X' && marks[6] === 'X' ) {
-      setGameIsWon(true)
-    }
-    if ( marks[1] === 'X' && marks[4] === 'X' && marks[7] === 'X' ) {
-      setGameIsWon(true)
-    }
-    if ( marks[3] === 'X' && marks[4] === 'X' && marks[5] === 'X' ) {
-      setGameIsWon(true)
-    }
   }, [marks])
 
   function renderSquare(i) {
