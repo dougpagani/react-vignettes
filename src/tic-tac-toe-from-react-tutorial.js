@@ -29,17 +29,20 @@ function Square({mark, onClick}) {
 
 function Board() {
   const [ marks, setMarks ] = useState(Array(9).fill(null))
+  const [ XIsNext, setXToBeNext ] = useState(true)
+
   function renderSquare(i) {
     function setMark() {
       let newMarks = marks.slice()
-      newMarks[i] = 'x'
+      newMarks[i] = XIsNext ? 'X' : 'O'
+      setXToBeNext(!XIsNext)
       setMarks(newMarks)
     }
     return <Square mark={marks[i]} onClick={setMark}/>;
   }
 
 
-  const status = 'Next player: X';
+  const status = `Next player: ${XIsNext ? 'X' : 'O'}`;
 
   return (
     <div className="board">
