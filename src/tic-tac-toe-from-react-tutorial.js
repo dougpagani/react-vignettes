@@ -47,6 +47,29 @@ function Board({setGameIsWon}) {
     if ( marks[0] === 'X' && marks[1] === 'X' && marks[2] === 'X' ) {
       setGameIsWon(true)
     }
+
+    if ( marks[0] === 'X' && marks[3] === 'X' && marks[6] === 'X' ) {
+      setGameIsWon(true)
+    }
+
+    if ( marks[0] === 'X' && marks[4] === 'X' && marks[8] === 'X' ) {
+      setGameIsWon(true)
+    }
+    if ( marks[2] === 'X' && marks[5] === 'X' && marks[8] === 'X' ) {
+      setGameIsWon(true)
+    }
+    if ( marks[6] === 'X' && marks[7] === 'X' && marks[8] === 'X' ) {
+      setGameIsWon(true)
+    }
+    if ( marks[2] === 'X' && marks[4] === 'X' && marks[6] === 'X' ) {
+      setGameIsWon(true)
+    }
+    if ( marks[1] === 'X' && marks[4] === 'X' && marks[7] === 'X' ) {
+      setGameIsWon(true)
+    }
+    if ( marks[3] === 'X' && marks[4] === 'X' && marks[5] === 'X' ) {
+      setGameIsWon(true)
+    }
   }, [marks])
 
   function renderSquare(i) {
