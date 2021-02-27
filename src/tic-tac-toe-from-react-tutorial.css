@@ -16,6 +16,14 @@ ol, ul {
   padding-left: 30px;
 }
 
+.letter-o {
+  font-color: Blue;
+}
+
+.letter-x {
+  font-color: Red;
+}
+
 .board-row:after {
   clear: both;
   content: "";
