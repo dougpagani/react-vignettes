@@ -19,19 +19,25 @@
 import './tic-tac-toe-from-react-tutorial.css';
 import React, { useState } from 'react'
 
-function Square({init}) {
-  const [ mark, setMark ] = useState(init)
+function Square({mark, onClick}) {
   return (
-    <button className="square" onClick={() => { setMark('x') }}>
+    <button className="square" onClick={onClick}>
       {mark}
     </button>
   );
 }
 
 function Board() {
+  const [ marks, setMarks ] = useState(Array(9).fill(null))
   function renderSquare(i) {
-    return <Square init={i}/>;
+    function setMark() {
+      let newMarks = marks.slice()
+      newMarks[i] = 'x'
+      setMarks(newMarks)
+    }
+    return <Square mark={marks[i]} onClick={setMark}/>;
   }
+
 
   const status = 'Next player: X';
 
