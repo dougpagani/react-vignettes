@@ -42,32 +42,8 @@ function Board({setGameIsWon}) {
   const [ marks, setMarks ] = useState(Array(9).fill(null))
   const [ XIsNext, setXToBeNext ] = useState(true)
 
-  // useWinConditionChecker
-  useEffect(() => {
-    const winConditions = [
-      [0,1,2],
-      [0,3,6],
-      [0,4,8],
-      [2,5,8],
-      [6,7,8],
-      [2,4,6],
-      [1,4,7],
-      [3,4,6],
-    ]
-    // If any of the tileSets are all owned by just one player.
-    if (winConditions.some( 
-      (tileSet) => tileSet.every( (tile) => marks[tile] === 'X' )
-    )) {
-      setGameIsWon(true)
-    }
+  useWinConditionCheckerEffect(marks, setGameIsWon)
 
-    if (winConditions.some( 
-      (tileSet) => tileSet.every( (tile) => marks[tile] === 'O' )
-    )) {
-      setGameIsWon(true)
-    }
-
-  }, [marks])
 
   function renderSquare(i) {
     function setMark() {
@@ -124,6 +100,34 @@ function Game() {
       </div>
     </div>
   );
+}
+
+function useWinConditionCheckerEffect(marks, setGameIsWon) {
+  useEffect(() => {
+    const winConditions = [
+      [0,1,2],
+      [0,3,6],
+      [0,4,8],
+      [2,5,8],
+      [6,7,8],
+      [2,4,6],
+      [1,4,7],
+      [3,4,6],
+    ]
+    // If any of the tileSets are all owned by just one player.
+    if (winConditions.some( 
+      (tileSet) => tileSet.every( (tile) => marks[tile] === 'X' )
+    )) {
+      setGameIsWon(true)
+    }
+
+    if (winConditions.some( 
+      (tileSet) => tileSet.every( (tile) => marks[tile] === 'O' )
+    )) {
+      setGameIsWon(true)
+    }
+
+  }, [marks])
 }
 
 export default Game
