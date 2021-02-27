@@ -1,15 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useRef, useEffect, useMemo } from 'react';
-import TicTacToe from './tic-tac-toe.js'
+import TicTacToe from './tic-tac-toe-from-react-tutorial.js'
 
 function App() {
   return (
     <div className="App">
       <VignetteSelector/>
-      <BigTextAndPropRandomizer>
-        <TicTacToe/>
-      </BigTextAndPropRandomizer>
+      <TicTacToe/>
     </div>
   );
 }
