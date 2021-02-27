@@ -20,8 +20,14 @@ import './tic-tac-toe-from-react-tutorial.css';
 import React, { useState } from 'react'
 
 function Square({mark, onClick}) {
+  const RED = "#633"
+  const BLUE = "#366"
+  const GRAY = "#555"
+  let color = GRAY
+  if (mark === 'X') color = RED
+  if (mark === 'O') color = BLUE
   return (
-    <button className="square" onClick={onClick}>
+    <button style={{"background-color": color}} className="square" onClick={onClick}>
       {mark}
     </button>
   );
