@@ -61,6 +61,12 @@ function Board({setGameIsWon}) {
       setGameIsWon(true)
     }
 
+    if (winConditions.some( 
+      (tileSet) => tileSet.every( (tile) => marks[tile] === 'O' )
+    )) {
+      setGameIsWon(true)
+    }
+
   }, [marks])
 
   function renderSquare(i) {
