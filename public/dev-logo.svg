@@ -59,7 +59,7 @@
      id="g839"
      transform="matrix(0.06500657,0,0,0.06482033,-10.006722,-1.877248)">
     <rect
-       style="opacity:0.765;fill:#5f5454;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:0.765;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect841"
        width="524.43176"
        height="516.22913"
@@ -75,7 +75,7 @@
        cy="286.91135"
        r="45.700001"
        id="circle835"
-       style="fill:#ff0000;fill-opacity:1" />
+       style="fill:#ff00ff;fill-opacity:1" />
     <path
        d="M 516.83639,68.51134 Z"
        id="path837" />
